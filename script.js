@@ -23,6 +23,33 @@ function computerPlay() {
     return choiceString;
 }
 
+function playerPlay() {
+    let choice = prompt("What do you pick? (Rock/Paper/Scissors)");
+    let correctedChoice = choice.charAt(0).toUpperCase() + choice.substring(1).toLowerCase();
+    let validAnswer = false;
+    let returnValue;
+    while (validAnswer === false) {
+        switch (correctedChoice) {
+            case 'Rock':
+                returnValue = 'Rock';
+                validAnswer = true;
+                break;
+            case 'Paper':
+                returnValue = 'Paper';
+                validAnswer = true;
+                break;
+            case 'Scissors':
+                returnValue = 'Scissors';
+                validAnswer = true;
+                break;
+            default:
+                alert("Answer invalid! Choose Rock, Paper, or Scissors");
+                break;
+        }
+    }
+    return returnValue;
+}
+
 function playGame(playerChoice, computerChoice) {
     let winner;
     switch (playerChoice) {
@@ -64,7 +91,10 @@ function play() {
     let playerScore = 0;
     let computerScore = 0;
     for (let i = 0; i < 5; i++) {
-        let playerChoice = 'Rock';
+        console.log(`-------------
+ROUND ${i}
+-------------`);
+        let playerChoice = playerPlay();
         let computerChoice = computerPlay();
         console.log(`The player chose ${playerChoice}`);
         console.log(`The computer chose ${computerChoice}`);
